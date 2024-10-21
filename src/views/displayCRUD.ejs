@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get CRUD</title>
+</head>
+<body>
+    <div class="table-container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">firstName</th>
+                    <th scope="col">lastName</th>
+                    <th scope="col">address</th>
+                    <th scope="col">action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% dataTable.forEach((user,index)=> {%>
+                    <tr>
+                        <td>
+                            <%= user.id %>
+                        </td>
+                        <td>
+                            <%= user.email %>
+                        </td>
+                        <td>
+                            <%= user.firstName %>
+                        </td>
+                        <td>
+                            <%= user.lastName %>
+                        </td>
+                        <td>
+                            <%= user.address %>
+                        </td>
+                        <td>
+                            <a href="/edit-crud?id=<%= user.id %>" class="btn-edit" type="button">Edit</a>
+                            <a href="/delete-crud?id=<%= user.id %>" class="btn-delete" type="button">Delete</a>
+                        </td>
+                    </tr>
+                    <% }); %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
