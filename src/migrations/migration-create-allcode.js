@@ -1,14 +1,14 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('allcores', {
+    await queryInterface.createTable('allcodes', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      key: {
+      keyMap: {
         type: Sequelize.STRING
       },
       type: {
@@ -31,6 +31,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('allcores');
+    await queryInterface.dropTable('allcodes');
   }
 };

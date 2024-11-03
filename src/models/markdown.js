@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Schedule extends Model {
+  class Markdown extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,22 +11,19 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Schedule.belongsTo(models.Allcode, {
-        foreignKey: 'timeType',
-        targetKey: 'keyMap',
-        as: 'timeTypeData'
-      })
+      Markdown.belongsTo(models.User, {foreignKey: 'doctorId'});
     }
   };
-  Schedule.init({
-    currentNumber: DataTypes.INTEGER,
-    maxNumber: DataTypes.INTEGER,
-    date: DataTypes.STRING,
-    timeType: DataTypes.STRING,
+  Markdown.init({
+    contentHTML: DataTypes.TEXT('long'),
+    contentMarkdown: DataTypes.TEXT('long'),
+    description: DataTypes.TEXT('long'),
     doctorId: DataTypes.INTEGER,
+    specialtyId: DataTypes.INTEGER,
+    clinicId: DataTypes.INTEGER,
   }, {
     sequelize,
-    modelName: 'Schedule',
+    modelName: 'Markdown',
   });
-  return Schedule;
+  return Markdown;
 };
